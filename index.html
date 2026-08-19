@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Us, Somehow 💜</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(
+                    circle at top,
+                    #c8a2e8,
+                    #8f6bb3 45%,
+                    #4b356b 100%
+                );
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .scene {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 750px;
+            animation: appear 1.5s ease;
+        }
+
+        .small-text {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.85;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(48px, 9vw, 90px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+            text-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 span {
+            color: #f3e8ff;
+        }
+
+        .subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        button {
+            border: none;
+            padding: 16px 34px;
+            border-radius: 50px;
+            background: #ffffff;
+            color: #704c91;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 8px 30px rgba(30, 15, 50, 0.25);
+        }
+
+        button:hover {
+            transform: translateY(-4px) scale(1.05);
+
+            box-shadow:
+                0 12px 35px rgba(30, 15, 50, 0.35);
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        .heart {
+            position: fixed;
+            bottom: -30px;
+            font-size: 20px;
+            pointer-events: none;
+            animation: floatUp linear forwards;
+            opacity: 0.7;
+        }
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        @keyframes floatUp {
+
+            from {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.8;
+            }
+
+            to {
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .scene {
+                padding: 20px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 14px 28px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <main class="scene">
+
+        <section class="content">
+
+            <div class="small-text">
+                A very serious production...
+            </div>
+
+            <h1>
+                Us,<br>
+                <span>Somehow 💜</span>
+            </h1>
+
+            <p class="subtitle">
+                A little story about two people,
+                a few unexpected moments,
+                and something I really wanted to tell you.
+            </p>
+
+            <button onclick="startStory()">
+                🎬 Begin the story
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function startStory() {
+
+            alert(
+                "Okay... you've officially entered the story. 💜"
+            );
+
+        }
+
+
+        function createHeart() {
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            const hearts = [
+                "💜",
+                "💜",
+                "✨",
+                "♡"
+            ];
+
+            heart.innerHTML =
+                hearts[Math.floor(Math.random() * hearts.length)];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (5 + Math.random() * 5) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+
+                heart.remove();
+
+            }, 10000);
+
+        }
+
+
+        setInterval(createHeart, 900);
+
+    </script>
+
+</body>
+</html>
